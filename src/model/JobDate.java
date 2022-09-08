@@ -11,6 +11,7 @@ import java.time.LocalDate;
 public class JobDate {
 	private LocalDate date = null;
 	private LocalDate today = LocalDate.now();
+	private String str = null;
 
 	public void updateDate(LocalDate date) {
 		this.date = date;
@@ -19,23 +20,27 @@ public class JobDate {
 	public LocalDate getDate() {
 		return date;
 	}
+	
+	public String getString() {
+		updateString();
+		return str;
+	}
 
 	/**
 	 * Compare date
 	 * @return Tomorrow, Today, otherwise dd/mm/yyyy
 	 */
-	public String getString() {
+	public void updateString() {
 		if (date.equals(today.plusDays(1))) {
-			return "Tomorrow";
+			str = "Tomorrow";
 		}
 		else if(date.equals(today)){
-			return "Today";
+			str = "Today";
 		}else {
 			String mm = Integer.toString(date.getMonthValue());
 			String yy = Integer.toString(date.getYear());
 			String dd = Integer.toString(date.getDayOfMonth());
-			return dd +"/"+ mm +"/"+ yy;
+			str = dd +"/"+ mm +"/"+ yy;
 		}
 	}
-
 }
