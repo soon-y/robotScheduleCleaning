@@ -42,27 +42,29 @@ public class ScheduledJob {
 		String hr = Integer.toString(jobTime.getTime().getHour());
 		String min = Integer.toString(jobTime.getTime().getMinute());
 		String day = " ";
-		// if Repeated Day is set, Date is empty
-		if(jobDay.getString()!=null) { day = jobDay.getStringTree(); }
-		String dateStr = jobDay.getString();
+		String dateStr = " ";
 		String date = " ";
 		String month = " ";
 		String year = " ";
+		// if Repeated Day is set, Date is empty
+		if(jobDay.getString()!=null) { 
+			day = jobDay.getStringTree();
+			dateStr = jobDay.getString();
+		}
 		// if Date is set, Repeated Day is empty
 		if(jobDate.getDate()!=null) {
-			dateStr = " ";
+			dateStr = jobDate.getString();
 			date = Integer.toString(jobDate.getDate().getDayOfMonth());
 			month = Integer.toString(jobDate.getDate().getMonthValue());
 			year = Integer.toString(jobDate.getDate().getYear());
 		}
 		String area = jobArea.getString();
-		
+
 		//instantiate SavedJob; insert Data into LinkedList
 		saved = new SavedJob(label,hr,min,day,dateStr,date,month,year,area);
-		
+
 		//add LinkedList to ArrayList
 		scheduledJob.add(saved);
-
 	}	
 	
 	/**
