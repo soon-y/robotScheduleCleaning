@@ -42,14 +42,14 @@ public class ScheduleView extends JPanel implements ViewInterface{
 				box = new ScheduledBox(width, height);
 				//display data on ScheduleBox
 				box.label().setText(scheduledJob.get(i, 0));
-				box.time().setText(scheduledJob.saved().get(1) +":"+scheduledJob.get(i, 2));
-				if(scheduledJob.get(i, 3) == " ") { //if JobDay is null, display Date.
+				box.time().setText(scheduledJob.get(i, 1) +":"+scheduledJob.get(i, 2));
+				//if JobDay is null, display Date.
+				if(scheduledJob.get(i, 3) == " ") { 
 					box.date().setText(scheduledJob.get(i, 5)+ "/" +
 							scheduledJob.get(i, 6)+"/"+ scheduledJob.get(i, 7));
 				}else {
 					box.date().setText(scheduledJob.get(i, 4));							
-				}
-				
+				}		
 				boxList.add(box);
 			}
 
